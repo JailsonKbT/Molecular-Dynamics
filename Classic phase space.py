@@ -13,7 +13,7 @@ import pylab as pl
 m = 1                                               # Massa do Corpo(Elemento de Inércia).
 k = 8                                               # Constante Elástica da mola(Meio Elástico)
 xt0 = 10                                            # Posição Inicial do bloco  ----> x(t0) = xt0 = 10cm
-vt0 = 0                                             # Velocidade Inicial do bloco  ----> V(t0) = X'(t0) = X0' = V0 = cm/s
+vt0 = 0                                             # Velocidade Inicial do bloco  ----> V(t0) = X'(t0) = X0' = V0 e [V0] = [1cm]/[1s]
 gamma = 1.05                                        # Coeficiente de Arrasto do bloco cúbico no ar.
 at0 = (k * xt0) / m                                 # Aceleração do bloco na posição em que é imediatamente solto do repouso.
 passos = 850                                        # Número de Iterações.
@@ -27,10 +27,10 @@ x[0] = xt0                                          # Define a Posição Inicial
 a[0] = at0                                          # Define a Aceleração Inicial
 
 # Aplicando o Algoritmo de Euler Para Evolução Dinâmica:
-for i in range(0, passos):                                                      # PARA O I-ÉSIMO DADO NO ALCANÇE QUE VAI DE ZERO ATÉ O NÚMERO DE PASSOS FAÇA:
-    a[i + 1] = (x[i] * k - gamma * v[i]) / m                                    # Implementando a Aceleração Segundo o Método de Euler.
-    v[i + 1] = (-k / m) * deltat * x[i] + v[i] - v[i] * deltat * gamma / m       # Implementando a velocidade do i-ésimo+1 dado de v, de acordo com Euler.
-    x[i + 1] = deltat * v[i] + x[i]                                             # Implementando a posição do i-ésimo dado de x, de acordo com Euler.
+for i in range(0, passos):                                                     # PARA O I-ÉSIMO DADO NO ALCANÇE QUE VAI DE ZERO ATÉ O NÚMERO DE PASSOS FAÇA:
+    a[i + 1] = (x[i] * k - gamma * v[i]) / m                                   # Implementando a Aceleração Para o Problema.
+    v[i + 1] = (-k / m) * deltat * x[i] + v[i] - v[i] * deltat * gamma / m     # Implementando a velocidade do i-ésimo+1 dado de v, de acordo com Euler.
+    x[i + 1] = deltat * v[i] + x[i]                                            # Implementando a posição do i-ésimo dado de x, de acordo com Euler.
 
 iterations = 850
 tempomax = 100
